@@ -118,9 +118,9 @@ class Application extends BaseApplication
             ->add(new CsrfProtectionMiddleware([
                 'httponly' => true,
             ]))
-            ->add(new AuthenticationMiddleware($this));
+            ->add(new AuthenticationMiddleware($this))
             // Add authorization **after** authentication
-        $middlewareQueue->add(new AuthorizationMiddleware($this));
+            ->add(new AuthorizationMiddleware($this));
 
         return $middlewareQueue;
     }

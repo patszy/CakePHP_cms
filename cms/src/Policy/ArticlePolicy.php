@@ -47,6 +47,11 @@ class ArticlePolicy
         return $this->isAuthor($user, $article);
     }
 
+    protected function isAuthor(IdentityInterface $user, Article $article)
+    {
+        return $article->user_id === $user->getIdentifier();
+    }
+
     /**
      * Check if $user can view Article
      *
